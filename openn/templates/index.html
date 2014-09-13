@@ -10,76 +10,163 @@
     <script src="{{ url_for('static', filename='jquery.min.js') }} "></script>
     <script src="{{ url_for('static', filename='js/vendor/modernizr.js') }} "></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='fonts/foundation-icons.css') }} "></link>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
 
 
 </head>
 
 <body>
+    <div class>
+
+        <div class="row">
+            <div class="large-3 columns">
+                <h1><a href="http://openn.me"><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
+            </div>
+            <div class="large-9 columns"></div>
+        </div>
+
+        <div class="row">
+            <div class="large-4 columns" id="intro-text">
+
+                <h3>Welcome to Openn</h3>
+                Openn is the only resource for class and professor grade distributions at the University of Pennsylvania. Use Openn to explore classes, compare professors, and gain insight into your own personal grade history. To get started, sign up for an account, or sign in to the right. Or, play around with the demo below.
+
+            </div>
+
+            <div class="large-4 columns" id="signUp">
+                <div class="signup-panel">
+                    <p class="welcome">Sign Up</p>
+                    <form>
+                        <div class="row collapse">
+                            <div class="small-2  columns">
+                                <span class="prefix"><i class="fi-torso-female"></i></span>
+                            </div>
+                            <div class="small-10  columns">
+                                <input type="text" class="username" placeholder="username">
+                            </div>
+                        </div>
+                        <div class="row collapse">
+                            <div class="small-2 columns ">
+                                <span class="prefix"><i class="fi-lock"></i></span>
+                            </div>
+                            <div class="small-10 columns ">
+                                <input type="text" class="password" placeholder="password">
+                                <small id="signup-errorbox" class="error" style="display:none"></small>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="button">Sign Up</div>
 
 
-    <div class="row">
-        <div class="large-4 columns" id="signUp">
-            <div class="signup-panel">
-                <p class="welcome">OPenn</p>
-                <form>
-                    <div class="row collapse">
-                        <div class="small-2  columns">
-                            <span class="prefix"><i class="fi-torso-female"></i></span>
-                        </div>
-                        <div class="small-10  columns">
-                            <input type="text" class="username" placeholder="username">
-                        </div>
-                    </div>
-                    <div class="row collapse">
-                        <div class="small-2 columns ">
-                            <span class="prefix"><i class="fi-lock"></i></span>
-                        </div>
-                        <div class="small-10 columns ">
-                            <input type="text" class="password" placeholder="password">
-                            <small id="signup-errorbox" class="error" style="display:none"></small>
-                        </div>
-                    </div>
-                </form>
-                <div class="button ">Sign Up!</div>
-                <!--  <p>Already have an account? <a href="#">Login here &raquo</a>
+                    <!--  <p>Already have an account? <a href="#">Login here &raquo</a>
                 </p> -->
+
+                </div>
+
+
             </div>
-        </div>
-        <div class="large-4 columns" id="signIn">
-            <div class="signup-panel">
-                <p class="welcome">OPenn</p>
-                <form>
-                    <div class="row collapse">
-                        <div class="small-2  columns">
-                            <span class="prefix"><i class="fi-torso-female"></i></span>
-                        </div>
-                        <div class="small-10  columns">
-                            <input type="text" class="username" placeholder="username">
 
-                        </div>
-                    </div>
-                    <div class="row collapse">
-                        <div class="small-2 columns ">
-                            <span class="prefix"><i class="fi-lock"></i></span>
-                        </div>
-                        <div class="small-10 columns ">
-                            <input type="text" class="password" placeholder="password">
-                            <small id="signin-errorbox" class="error" style="display:none"></small>
 
+            <div class="large-4 columns" id="signIn">
+                <div class="signup-panel">
+                    <p class="welcome">Sign In</p>
+                    <form>
+                        <div class="row collapse">
+                            <div class="small-2  columns">
+                                <span class="prefix"><i class="fi-torso-female"></i></span>
+                            </div>
+                            <div class="small-10  columns">
+                                <input type="text" class="username" placeholder="username">
+
+                            </div>
                         </div>
-                    </div>
-                </form>
-                <div class="button ">Sign In</div>
-                <!-- <p>Already have an account? <a href="#">Login here &raquo</a> -->
-                <!-- </p> -->
+                        <div class="row collapse">
+                            <div class="small-2 columns ">
+                                <span class="prefix"><i class="fi-lock"></i></span>
+                            </div>
+                            <div class="small-10 columns ">
+                                <input type="text" class="password" placeholder="password">
+                                <small id="signin-errorbox" class="error" style="display:none"></small>
+
+                            </div>
+                        </div>
+                    </form>
+                    <div class="button">Sign In</div>
+                    <!-- <p>Already have an account? <a href="#">Login here &raquo</a> -->
+                    <!-- </p> -->
+                </div>
             </div>
+            
+
         </div>
-    </div>
+
+	<div class="row">
+	  <br> <br>
+                <div class="large-12 columns">
+                  <!-- <br>
+                  <img src="{{ url_for('static', filename='img/dist.png')}}"></img> -->
+                    <div id="container" style="height: 300px"></div>
+
+                    <script>
+                       $('#container').highcharts({
+
+                            chart: {
+                                renderTo: 'container',
+                                type: 'column'
+                            },
+
+                            title: {
+                                text: 'Grade Distribution for Underwater Basket Weaving'
+                            },
+
+                            legend: {
+                                enabled: false
+                            },
+
+                            xAxis: {
+                                categories: ['A+', 'A', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
+                            },
+
+                            yAxis: {
+                                title: {
+                                    text: 'Students'
+                                }
+                            },
+
+                            tooltip: {
+                                valueSuffix: ' students',
+                                pointFormat: '<b>{point.y}</b>',
+                            },
+
+                            plotOptions: {
+                                column: {
+                                    groupPadding: 0,
+                                    pointPadding: 0,
+                                    borderWidth: 0,
+                                    shadow: true
+                                }
+                            },
+
+                            credits: {
+                                enabled: false
+                            },
+
+                            series: [{
+                                name: '',
+                                data: [5, 20, 25, 45, 43, 35, 23, 13, 11, 4, 2, 0]
+                            }]
+
+                        });
+                    </script>
+                </div>
+
+            </div>
 
 
-
-    <div id="setUserEventDiv"></div>
-    <!--  hello!!!
+        <div id="setUserEventDiv"></div>
+        <!--  hello!!!
     <div id="test"></div>
     Login
     <div id="login">
