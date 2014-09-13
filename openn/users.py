@@ -11,7 +11,7 @@ import time
 
 @app.route("/")
 def hello():
-    if session['username']:
+    if 'username' in session:
         return render_template('main.html')
     return render_template('index.html')
 
@@ -41,7 +41,8 @@ def auth():
         if bcrypt.check_password_hash(user['password'], entered_password):
             # Assign session data for user
             session['username'] = user['username']
-            return jsonify(user = user['username'])
+            app.logger.error('here')
+            return jsonify(username = user['username'])
         else:
             return jsonify(errors = 'signin_mismatch')
     else:
@@ -89,4 +90,4 @@ def create():
 @app.route("/logout/", methods = ['GET'])
 def logout():
     session.pop('username', None)
-    return render_template('index.html')
+    return jsonify(errors='none')
