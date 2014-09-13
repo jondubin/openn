@@ -13,10 +13,6 @@ import time
 def hello():
     return render_template('index.html')
 
-@app.route("/hi")
-def display():
-    return "hello world"
-
 #function to log them in, assumes using a form
 ##if they cannot log in, will redirect them 
 @app.route("/authenticate")
