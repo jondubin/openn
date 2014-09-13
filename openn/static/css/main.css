@@ -1,0 +1,16 @@
+#logout {
+    display: inline-block;
+    position:relative;
+    float: right;
+    height: 30px;
+    width: 80px;
+    border-radius: 3px;
+    background-color: #B6CECE;
+    color: black;
+    font-size: 14px;
+    margin: 10px;
+}
+
+#logout span {
+    padding-left: 15px;
+}

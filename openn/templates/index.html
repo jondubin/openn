@@ -18,24 +18,16 @@
 
 
     <div class="row">
-        <div class="large-6 columns">
+        <div class="large-4 columns" id="signUp">
             <div class="signup-panel">
-                <p class="welcome">Welcome to this awesome app!</p>
+                <p class="welcome">OPenn</p>
                 <form>
                     <div class="row collapse">
                         <div class="small-2  columns">
                             <span class="prefix"><i class="fi-torso-female"></i></span>
                         </div>
                         <div class="small-10  columns">
-                            <input type="text" placeholder="username">
-                        </div>
-                    </div>
-                    <div class="row collapse">
-                        <div class="small-2 columns">
-                            <span class="prefix"><i class="fi-mail"></i></span>
-                        </div>
-                        <div class="small-10  columns">
-                            <input type="text" placeholder="email">
+                            <input type="text" class="username" placeholder="username">
                         </div>
                     </div>
                     <div class="row collapse">
@@ -43,13 +35,39 @@
                             <span class="prefix"><i class="fi-lock"></i></span>
                         </div>
                         <div class="small-10 columns ">
-                            <input type="text" placeholder="password">
+                            <input type="text" class="password" placeholder="password">
                         </div>
                     </div>
                 </form>
-                <a href="#" class="button ">Sign Up! </a>
-                <p>Already have an account? <a href="#">Login here &raquo</a>
-                </p>
+                <div class="button ">Sign Up! </div>
+               <!--  <p>Already have an account? <a href="#">Login here &raquo</a>
+                </p> -->
+            </div>
+        </div>
+        <div class="large-4 columns" id="signIn">
+            <div class="signup-panel">
+                <p class="welcome">OPenn</p>
+                <form>
+                    <div class="row collapse">
+                        <div class="small-2  columns">
+                            <span class="prefix"><i class="fi-torso-female"></i></span>
+                        </div>
+                        <div class="small-10  columns">
+                            <input type="text" class="username" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="row collapse">
+                        <div class="small-2 columns ">
+                            <span class="prefix"><i class="fi-lock"></i></span>
+                        </div>
+                        <div class="small-10 columns ">
+                            <input type="text" class="password" placeholder="password">
+                        </div>
+                    </div>
+                </form>
+                <div class="button ">Sign In </div>
+                <!-- <p>Already have an account? <a href="#">Login here &raquo</a> -->
+                <!-- </p> -->
             </div>
         </div>
     </div>
@@ -57,7 +75,7 @@
 
 
     <div id="setUserEventDiv"></div>
-    hello!!!
+   <!--  hello!!!
     <div id="test"></div>
     Login
     <div id="login">
@@ -71,7 +89,7 @@
         <input class="password">
         <button value="Submit"></button>
     </div>
-    <button id="logout" value="Logout"></button>
+    <button id="logout" value="Logout"></button>-->
 </body>
 
 <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>

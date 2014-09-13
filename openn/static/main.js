@@ -1,21 +1,21 @@
 $(function() {
 
-    $('#login .password').keypress(function(e) {
+    $('#signIn .password').keypress(function(e) {
         if (e.which == 13) {
             login();
         }
     });
-    $('#create .password').keypress(function(e) {
+    $('#signUp .password').keypress(function(e) {
         if (e.which == 13) {
             createUser();
         }
     });
 
-    $('#login button').click(function() {
+    $('#signIn .button').click(function() {
         login();
     });
 
-    $('#create button').click(function() {
+    $('#signUp .button').click(function() {
         createUser();
     })
 
@@ -32,8 +32,8 @@ $(function() {
             dataType: 'json',
             method: 'GET',
             data: {
-                user: $('#create .username').val(),
-                password: $('#create .password').val(),
+                user: $('#signUp .username').val(),
+                password: $('#signUp .password').val(),
                 // password2: $('#signup-password2').val()
             }
         }).done(function(data) {
@@ -72,8 +72,8 @@ $(function() {
             dataType: 'json',
             method: 'GET',
             data: {
-                user: $('#login .username').val(),
-                password: $('#login .password').val()
+                user: $('#signIn .username').val(),
+                password: $('#signIn .password').val()
             }
         }).done(function(data) {
             console.log(data);

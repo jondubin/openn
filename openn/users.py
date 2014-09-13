@@ -11,6 +11,8 @@ import time
 
 @app.route("/")
 def hello():
+    if session['username']:
+        return render_template('main.html')
     return render_template('index.html')
 
 #function to log them in, assumes using a form

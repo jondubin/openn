@@ -25,4 +25,7 @@
 .signup-panel .button {
   margin-left: 35%;
 }
-   
+  
+#signUp .button {
+  background-color: red;
+}
