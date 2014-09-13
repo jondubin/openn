@@ -1,12 +1,14 @@
 import os
 from flask import Flask
 from flask import render_template
+from flask.ext.bcrypt import Bcrypt
 from pymongo import MongoClient
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['MONGO_DBNAME'] = 'opencourse'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+bcrypt = Bcrypt(app)
 
 
 

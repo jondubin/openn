@@ -3,7 +3,6 @@ $(function() {
     $('#login .password').keypress(function(e) {
         if (e.which == 13) {
             login();
-            setStorage();
         }
     });
     $('#create .password').keypress(function(e) {
@@ -14,7 +13,6 @@ $(function() {
 
     $('#login button').click(function() {
         login();
-        setStorage();
     });
 
     $('#create button').click(function() {
@@ -98,6 +96,8 @@ $(function() {
                 }
                 $('#signup-errorbox').text(msg).fadeIn('fast');
             } else {
+                setStorage();
+
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
                 // location.reload();
             }

@@ -1,11 +1,11 @@
-from openn import app, mongo
+from openn import app, mongo, bcrypt
 # import app, mongo
 import json
 from bson import json_util
 from flask import session, render_template, request, jsonify
 from datetime import timedelta
 from bson.json_util import dumps
-import bcrypt, time
+import time
 
 
 
@@ -21,6 +21,9 @@ def display():
 ##if they cannot log in, will redirect them 
 @app.route("/authenticate")
 def auth():
+    import pdb
+    # pdb.set_trace()
+
     entered_user = request.args['user']
     entered_password = request.args['password']
 
@@ -32,13 +35,15 @@ def auth():
 
     students = mongo.students
     # Find the user
-    u = students.find_one({'username': entered_user.lower()})
-    if not(u == None):
+    user = students.find_one({'username': entered_user.lower()})
+    if not user == None:
         # The user was found, so continue
-        if u['password'] == bcrypt.hashpw(entered_password, u['password']):
+        # if u['password'] == bcrypt.hashpw(entered_password, u['password']):
+        # pw_hash = bcrypt.generate_password_hash(entered_password, 12)
+        if bcrypt.check_password_hash(user['password'], entered_password):
             # Assign session data for user
-            session['username'] = u['username']
-            return jsonify(user = u['username'])
+            session['username'] = user['username']
+            return jsonify(user = user['username'])
         else:
             return jsonify(errors = 'signin_mismatch')
     else:
@@ -67,7 +72,8 @@ def create():
     #Let's put the post in the MongoDB database
     if pw1:
         # Hash a password for the first time, with a randomly-generated salt
-        hashed_password = bcrypt.hashpw(pw1, bcrypt.gensalt(12))
+        # hashed_password = bcrypt.hashpw(pw1, bcrypt.gensalt(12))
+        hashed_password = bcrypt.generate_password_hash(pw1, 12)
         user_id = mongo.students.insert({'username' : username.lower(),
                                 'password': hashed_password
                                 })
