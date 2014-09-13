@@ -49,9 +49,6 @@ $(function() {
                     case 'pass_none':
                         var msg = 'Please choose a password.';
                         break;
-                    case 'pass_nomatch':
-                        var msg = 'Your passwords don\'t match!';
-                        break;
                     default:
                         var msg = 'Sorry, we couldn\'t sign you up!';
                 }
@@ -79,22 +76,16 @@ $(function() {
             console.log(data);
             if (data.errors) {
                 switch (data.errors) {
-                    case 'username_taken':
-                        var msg = 'That username is taken!';
-                        break;
                     case 'username_none':
-                        var msg = 'Please choose a username.';
+                        var msg = 'Please enter a username.';
                         break;
                     case 'pass_none':
-                        var msg = 'Please choose a password.';
-                        break;
-                    case 'pass_nomatch':
-                        var msg = 'Your passwords don\'t match!';
+                        var msg = 'Please enter a password.';
                         break;
                     default:
-                        var msg = 'Sorry, we couldn\'t sign you up!';
+                        var msg = 'Sorry, we couldn\'t sign you in. Check your username and password.';
                 }
-                $('#signup-errorbox').text(msg).fadeIn('fast');
+                $('#signin-errorbox').text(msg).fadeIn('fast');
             } else {
                 setStorage();
                 console.log('success');

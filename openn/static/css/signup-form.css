@@ -30,10 +30,10 @@
   background-color: red;
 }
 
-#signup-errorbox, #signin-errorbox{
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  opacity: .5;
-}
+/* #signup-errorbox, #signin-errorbox{ */
+/*   position: absolute; */
+/*   width: 100px; */
+/*   height: 100px; */
+/*   background-color: red; */
+/*   opacity: .5; */
+/* } */
