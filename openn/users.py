@@ -4,6 +4,12 @@ from flask import session, render_template
 
 import bcrypt, time
 
+
+
+@app.route("/")
+def hello():
+    return render_template('index.html')
+
 @app.route("/hi")
 def display():
     return "hello world"
