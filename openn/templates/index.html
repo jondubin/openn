@@ -7,6 +7,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js') }}"></script></head>
 
 <body>
+    <div id = "setUserEventDiv"></div>
     hello!!!
     <div id="test"></div>
     Login
@@ -19,8 +20,9 @@
     <div id="create">
         <input class="username">
         <input class="password">
-        <input value="Submit">
+        <button value="Submit"></button>
     </div>
+    <button id = "logout" value="Logout"></button>
 </body>
 
 <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
