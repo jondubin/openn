@@ -1,5 +1,6 @@
 from openn import app, mongo
-from flask import sesssion, render_template
+# import app, mongo
+from flask import session, render_template
 
 import bcrypt, time
 
