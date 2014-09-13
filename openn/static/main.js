@@ -3,6 +3,7 @@ $(function() {
     $('#login .password').keypress(function(e) {
         if (e.which == 13) {
             login();
+            setStorage();
         }
     });
     $('#create .password').keypress(function(e) {
@@ -38,6 +39,7 @@ $(function() {
                 // password2: $('#signup-password2').val()
             }
         }).done(function(data) {
+            console.log(data);
             if (data.errors) {
                 switch (data.errors) {
                     case 'username_taken':
