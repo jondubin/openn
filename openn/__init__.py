@@ -14,5 +14,7 @@ username = 'feef'
 password = 'p3nn4pps'
 ##connect to database
 conn = MongoClient(server, port)
-db = conn[db_name]
-db.authenticate(username, password)
+mongo = conn[db_name]
+mongo.authenticate(username, password)
+
+import openn.users
