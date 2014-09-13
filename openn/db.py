@@ -1,5 +1,5 @@
 from openn import app, mongo
-from flask import request
+from flask import request, jsonify
 import json
 
 @app.route("/insertDatabase", methods = ['GET'])
@@ -60,5 +60,5 @@ def req():
                  {'$push': {sec + '.students': username} } )
 
 
-    return 'success'
+    return jsonify(success='success')
     
