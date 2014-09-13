@@ -3,15 +3,25 @@
 <html>
 
 <head>
-<title> opencourse</title>
-<script src = '../lib/jquery.min.js'></script>
-</head>
+    <title>opencourse</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js') }}"></script></head>
 
 <body>
-hello!!!
-<div id ="test"></div>
+    hello!!!
+    <div id="test"></div>
+    Login
+    <form id="login">
+        <input id="username">
+        <input id="password">
+        <input type="submit" value="Submit">
+    </form>
+    Create
+    <form id="create">
+        <input id="username">
+        <input id="password">
+        <input type="submit" value="Submit">
+    </form>
 </body>
 
-<script src = '../js/main.js'></script>
-
+<script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
 </html>
