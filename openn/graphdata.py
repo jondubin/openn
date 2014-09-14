@@ -1,7 +1,7 @@
 from openn import app, mongo
 from flask import request, jsonify, session
 import json, yaml, penncoursereview, requests
-
+import datetime
 import profHash
 baseURL = "http://api.penncoursereview.com/v1/"
 PCR_AUTH_TOKEN = app.config['pcr_token']
@@ -102,4 +102,34 @@ def getProf():
             grades = iterateClasses(data)
             return jsonify(grades = genGrades(grades))
             #have list of professor classes
-    return jsonify(error = "no data yet")       
+    return jsonify(error = "no data yet")   
+
+@app.route('/userSchoolData', methods=['GET'])
+def getUserSchoolData():
+    arr = [0, 0, 0, 0]
+    yearArr = [0, 0, 0, 0]
+    curYear = datetime.datetime.now().year
+    ##this logic will have to be updated!!
+    for student in mongo.students.find():
+        if 'school' in student: 
+            if student['school'] == 'EAS': 
+                arr[0] +=1
+            elif student['school'] == 'COL':
+                arr[1] +=1
+            elif student['school'] == 'WHAR': 
+                arr[2] +=1
+            else:  #nurs
+                arr[3] +=1
+            if int(student['year'].split(' ')[-1]) - curYear == 1:
+                yearArr[0] +=1 
+            if int(student['year'].split(' ')[-1]) - curYear == 2:
+                yearArr[1] +=1 
+            if int(student['year'].split(' ')[-1]) - curYear == 3:
+                yearArr[2] +=1 
+            if int(student['year'].split(' ')[-1]) - curYear == 4:
+                yearArr[3] +=1 
+
+    return jsonify(schoolData = [['SEAS', arr[0]], ['COLLEGE', arr[1]], 
+                        ['WHARTON', arr[2]], ['NURSING', arr[3]]], 
+                    yearData =[['Senior', yearArr[0]], ['Junior', yearArr[1]], 
+                        ['Sophomore', yearArr[2]], ['Freshman', yearArr[3]]] )      

@@ -39,8 +39,6 @@ function setupCourseSearch() {
             }
         });
     });
-
-
 }
 
 gradesArray = [];

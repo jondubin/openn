@@ -94,7 +94,8 @@ function personalHistogram() {
         yAxis: {
             title: {
                 text: 'Students'
-            }
+            }, 
+            allowDecimals:false
         },
 
         tooltip: {

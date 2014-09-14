@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.default.css') }}">
     <script src="{{ url_for('static', filename='main.js') }} "></script>
     <script src="{{ url_for('static', filename='personal.js') }} "></script>
-
+    <script src="{{ url_for('static', filename='school.js') }} "></script>
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
@@ -81,7 +81,7 @@
     </script> -->
     <!-- ~~~~~~~~~~~~~Personal Page~~~~~~~~~~~~~~~~ -->
     <script type='text/html' id="personalPerformanceContent">
-        <h3>Personal History</h3>
+        <h3>Personal Performance</h3>
         <table id="personalTable" class="tablesorter">
             <thead>
                 <tr>
@@ -112,7 +112,9 @@
     <!-- ~~~~~~~~~~~~~School Page~~~~~~~~~~~~~~~~ -->
 
     <script type='text/html' id="schoolContent">
-    <h3>School at a Glance</h3>
+    <h3> School </h3>
+    <div id="schoolContainer" style="height: 300px"></div>
+    <div id="yearContainer" style="height: 300px"></div>
     </script>
 
     <script>
@@ -132,36 +134,32 @@
     }); */
 
     $(document).ready(function() {
-        $(document).ready(function() {
+        var personalPerformanceContent = $("#personalPerformanceContent").html();
+        $("#content").html(personalPerformanceContent);
+        ajaxCall();
+    });
+
+    $(document).ready(function() {
+        $("#personal").click(function() {
             var personalPerformanceContent = $("#personalPerformanceContent").html();
             $("#content").html(personalPerformanceContent);
             ajaxCall();
         });
     });
 
-    
-    $("#personal").click(function() {
-        $(document).ready(function() {
-            var personalPerformanceContent = $("#personalPerformanceContent").html();
-            $("#content").html(personalPerformanceContent);
-            ajaxCall();
-        });
-    });
-
-
-    $("#search").click(function() {
-        $(document).ready(function() {
+    $(document).ready(function() {
+        $("#search").click(function() {
             setupCourseSearch();
             var searchContent = $("#searchContent").html();
             $("#content").html(searchContent);
         });
     });
 
-
-    $("#school").click(function() {
-        $(document).ready(function() {
+    $(document).ready(function() {
+        $("#school").click(function() {
             var schoolContent = $("#schoolContent").html();
             $("#content").html(schoolContent);
+            graphUserSchoolData();
         });
     });
     </script>
