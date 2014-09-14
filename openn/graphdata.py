@@ -1,12 +1,18 @@
 from openn import app, mongo
 from flask import request, jsonify, session
-import json, yaml
+import json, yaml, penncoursereview, requests
 
+import profHash
+baseURL = "http://api.penncoursereview.com/v1/"
+PCR_AUTH_TOKEN = app.config['pcr_token']
+
+import pdb
 @app.route('/personalPerformance', methods=['GET'])
 def getPersonal():
     username = session['username']
     user = mongo.students.find_one({'username': username})
-    return jsonify(data = user['grades'])
+    return jsonify(data = user['grades'],
+                   graphData = genGrades(user['grades']))
 
 def genGrades(grades):
     ret = []
@@ -60,6 +66,31 @@ def getSection():
 
     return courseName
 
-# @app.route('/getProf', methods=['GET'])
-# def getProf():
-    
+def iterateClasses(data):
+    for section in data['result']['sections']['values']:
+        alias = section['primary_alias']
+        pdb.set_trace()
+        # s = requests.get(baseURL + 'Course/' + section['id'] + "?token=public")
+        s = penncoursereview.Course(parseInt(section['id']))
+        pdb.set_trace()
+        semester = s['semester']
+        t = requests.get('/' + alias + '-' + semester)
+
+
+## @param prof Rajiv Gandhi
+## @param dept CIS
+@app.route('/getProf', methods=['GET'])
+def getProf():
+    arg = request.args['prof'].upper()
+    dept = request.args['dept'].upper()
+    lastname = arg.split('-')[-1]
+    firstname = arg.split('-')[0]
+    prof = profHash.profHash[lastname]
+    for person in prof: 
+        if dept in person["depts"] and person["first_name"].split(" ")[0] == firstname:
+            prof_id = person['id']
+            profClasses = requests.get(baseURL + 'instructors/' + prof_id + "?token=public")
+            data = yaml.load(profClasses.text)
+            iterateClasses(data)
+            #have list of professor classes
+           

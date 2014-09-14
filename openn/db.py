@@ -6,7 +6,6 @@ import json, yaml
 import pdb
 import requests
 
-import profHash
 
 reg_user = app.config['REGUSER']
 reg_pw = app.config['REGPW']
