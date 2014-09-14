@@ -13,6 +13,8 @@ def hello():
     if 'username' not in session: 
         return render_template('index.html')
     user = mongo.students.find_one({'username': session['username']})
+    if user == None:
+        return render_template('index.html')
     if 'grades' not in user:
         return render_template('landing.html', numUsers = mongo.students.count())
     else: return render_template('main.html')
