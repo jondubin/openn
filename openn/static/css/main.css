@@ -15,6 +15,18 @@
     padding-left: 15px;
 }
 
+#searchButton {
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    width: 50px;
+    background-color: #AD33FF;
+    color: white;
+}
+
+.ui-widget {
+    display: inline-block;
+}
 #footer {
     color: #808080;
 }

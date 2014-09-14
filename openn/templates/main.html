@@ -16,16 +16,26 @@
     <script src="{{ url_for('static', filename='main.js') }} "></script>
     <script src="{{ url_for('static', filename='personal.js') }} "></script>
 
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 
 </head>
 
 <body>
 
-
+    
     <div class="row">
         <div class="large-3 columns">
+<<<<<<< HEAD
             <h1><a href="http://openn.me" id='logo'><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
+=======
+            <h1>
+                <a href="#" id='logo'>
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" />
+                </a>
+            </h1>
+>>>>>>> 86f4ef199aebacdcd58c0e3187d88c7dc982de59
         </div>
         <div class="large-9 columns">
             <div id="logout">
@@ -60,7 +70,9 @@
 
         <div class="large-9 columns" id="content">
 
-            <h3>Page Title <small>Page subtitle</small></h3>
+            <h3>Page Title
+                <small>Page subtitle</small>
+            </h3>
 
             <p>Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin. Venison tail chuck pork chop, andouille ball tip beef ribs flank boudin bacon. Salami andouille pork belly short ribs flank cow. Salami sirloin turkey kielbasa. Sausage venison pork loin leberkas chuck short loin, cow ham prosciutto pastrami jowl. Ham hock jerky tri-tip, fatback hamburger shoulder swine pancetta ground round. Tri-tip prosciutto meatball turkey, brisket spare ribs shankle chuck cow chicken ham hock boudin meatloaf jowl.</p>
 
@@ -75,76 +87,82 @@
     </div>
 
     <script type='text/html' id="homeContent">
-        <h3> Home </h3>
+    <h3> Home </h3>
     </script>
+    <!-- ~~~~~~~~~~~~~Personal Page~~~~~~~~~~~~~~~~ -->
     <script type='text/html' id="personalPerformanceContent">
-        <h3> Personal Performance </h3>
+        <h3>Personal Performance</h3>
         <table id="personalTable" class="tablesorter">
-        <thead>
-        <tr>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Semester and Year</th>
-            <th class='sorter-grades'>Grade</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody">
-        
-    </tbody>
-</table>
-<div id="container" style="height: 300px"></div>
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Semester and Year</th>
+                    <th class='sorter-grades'>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
 
-            
+            </tbody>
+        </table>
+        <div id="container" style="height: 300px"></div >
     </script>
+    <!-- ~~~~~~~~~~~~~Search Page~~~~~~~~~~~~~~~~ -->
 
     <script type='text/html' id="searchContent">
-        <h3> Course Search </h3>
+    <h3> Course Search </h3>
+    <div class="ui-widget">
+        <label for="tags">Tags:</label>
+        <input id="tags">
+    </div> 
+    <div id="searchButton"></div>
     </script>
+    <!-- ~~~~~~~~~~~~~School Page~~~~~~~~~~~~~~~~ -->
 
     <script type='text/html' id="schoolContent">
-        <h3> School </h3>
+    <h3> School </h3>
     </script>
 
     <script>
-        $("#logo").click(function() {
-         $(document).ready(function() {
-                var homeContent = $("#homeContent").html();
-                $("#content").html(homeContent);
-            });
+    $("#logo").click(function() {
+        $(document).ready(function() {
+            var homeContent = $("#homeContent").html();
+            $("#content").html(homeContent);
         });
+    });
 
-        $("#home").click(function() {
-            $(document).ready(function() {
-                var homeContent = $("#homeContent").html();
-                $("#content").html(homeContent);
-            });
+    $("#home").click(function() {
+        $(document).ready(function() {
+            var homeContent = $("#homeContent").html();
+            $("#content").html(homeContent);
         });
+    });
 
-          $("#personal").click(function() {
-            $(document).ready(function() {
-                var personalPerformanceContent = $("#personalPerformanceContent").html();
-                $("#content").html(personalPerformanceContent);
-                ajaxCall();
-            });
+    $("#personal").click(function() {
+        $(document).ready(function() {
+            var personalPerformanceContent = $("#personalPerformanceContent").html();
+            $("#content").html(personalPerformanceContent);
+            ajaxCall();
         });
+    });
 
-     
-        $("#search").click(function() {
-            $(document).ready(function() {
-                var searchContent = $("#searchContent").html();
-                $("#content").html(searchContent);
-            });
+
+    $("#search").click(function() {
+        $(document).ready(function() {
+            setupCourseSearch();
+            var searchContent = $("#searchContent").html();
+            $("#content").html(searchContent);
         });
+    });
 
-     
-        $("#school").click(function() {
-            $(document).ready(function() {
-                var schoolContent = $("#schoolContent").html();
-                $("#content").html(schoolContent);
-            });
+
+    $("#school").click(function() {
+        $(document).ready(function() {
+            var schoolContent = $("#schoolContent").html();
+            $("#content").html(schoolContent);
         });
-
-     </script>
+    });
+    </script>
 
     <footer class="row" id="footer">
     <div class="large-12 columns">

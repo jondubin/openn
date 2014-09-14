@@ -6,6 +6,7 @@ import json, yaml
 import pdb
 import requests
 
+import profHash 
 
 reg_user = app.config['REGUSER']
 reg_pw = app.config['REGPW']
@@ -77,7 +78,6 @@ def req():
 
 
 def getProf(course, section):
-    # pdb.set_trace()
     semester = section.split('-')[3]
     subsection = section.split('-')[2]
     try:
@@ -99,3 +99,16 @@ def getProf(course, section):
 
     return "none"
 
+@app.route('/getTags', methods=['GET'])
+def getTags(): 
+    classTags = []
+    for section in mongo.classes.find():
+        if (section.keys()[0]) == "_id":
+            classTags.append(section.keys()[1])
+        else: classTags.append(section.keys()[0])
+    for prof in profHash.profHash:
+        #prof = last name
+        for prof2 in profHash.profHash[prof]:
+            first_name = prof2['first_name']
+            classTags.append(first_name +' '+ prof)
+    return jsonify(data = classTags)

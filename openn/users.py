@@ -14,15 +14,16 @@ def hello():
         return render_template('index.html')
     user = mongo.students.find_one({'username': session['username']})
     if 'grades' not in user:
-        return render_template('landing.html')
+        return render_template('landing.html', numUsers = mongo.students.count())
     else: return render_template('main.html')
+
+
 
 #function to log them in, assumes using a form
 ##if they cannot log in, will redirect them 
 @app.route("/authenticate")
 def auth():
     import pdb
-    # pdb.set_trace()
 
     entered_user = request.args['user']
     entered_password = request.args['password']
