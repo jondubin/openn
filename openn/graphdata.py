@@ -59,3 +59,7 @@ def getSection():
     return jsonify(grades = genGrades(section['grades']))
 
     return courseName
+
+# @app.route('/getProf', methods=['GET'])
+# def getProf():
+    
