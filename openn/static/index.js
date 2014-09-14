@@ -20,10 +20,11 @@ $(function() {
     })
 
 
-    function setStorage() {
+    function setStorage(val) {
         var customEvent = document.createEvent('Event');
         customEvent.initEvent('setUser', true, true);
         hiddenDiv = document.getElementById('setUserEventDiv');
+        $('#setUserEventDiv').text(val);
         hiddenDiv.dispatchEvent(customEvent);
     }
     function createUser() {
@@ -55,7 +56,7 @@ $(function() {
                 $('#signup-errorbox').text(msg).fadeIn('fast');
             } else {
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
-
+                setStorage($('#signUp .username').val());
                 location.reload();
             }
         });
@@ -87,7 +88,7 @@ $(function() {
                 }
                 $('#signin-errorbox').text(msg).fadeIn('fast');
             } else {
-                setStorage();
+                setStorage($('#signIn .username').val());
                 console.log('success');
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
                 location.reload();

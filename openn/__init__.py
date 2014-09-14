@@ -28,3 +28,4 @@ mongo.authenticate(username, password)
 
 import openn.users
 import openn.db
+import openn.graphdata
