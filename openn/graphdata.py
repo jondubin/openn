@@ -11,8 +11,9 @@ import pdb
 def getPersonal():
     username = session['username']
     user = mongo.students.find_one({'username': username})
+    grades = [x[0] for x in user['grades'].itervalues()]
     return jsonify(data = user['grades'],
-                   graphData = genGrades(user['grades']))
+                   graphData = genGrades(grades))
 
 def genGrades(grades):
     ret = []
@@ -71,7 +72,7 @@ def iterateClasses(data):
         alias = section['primary_alias']
         pdb.set_trace()
         # s = requests.get(baseURL + 'Course/' + section['id'] + "?token=public")
-        s = penncoursereview.Course(parseInt(section['id']))
+        s = penncoursereview.Course(int(section['id']))
         pdb.set_trace()
         semester = s['semester']
         t = requests.get('/' + alias + '-' + semester)
