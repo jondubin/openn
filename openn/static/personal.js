@@ -89,7 +89,7 @@ function personalHistogram() {
         },
 
         xAxis: {
-            categories: ['A+', 'A', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
+            categories: ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
         },
 
         yAxis: {

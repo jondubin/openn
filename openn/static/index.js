@@ -1,3 +1,35 @@
+function getRandomClassName(){
+        var names = ["Spanish 101","Introduction to Film","Social Psychology","Advanced Criminal Law",
+        "Introduction to Statistics","Home Economics","Debate 109","Environmental Science",
+        "Comparative Religion","Investigative Journalism","Interpretive Dance",
+        "Romantic Expressionism","Communication Studies","Physical Education",
+        "Basic Genealogy","Beginner Pottery","The Science of Illusion",
+        "Contemporary American Poultry","The Art of Discourse","Modern Warfare",
+        "English as a Second Language","Anthropology 101","Accounting for Lawyers",
+        "The Psychology of Letting Go","Basic Rocket Science","Messianic Myths and Ancient Peoples",
+        "Epidemiology","Aerodynamics of Gender","Cooperative Calligraphy",
+        "Conspiracy Theories and Interior Design","Mixology Certification","Celebrity Pharmacology",
+        "Advanced Dungeons & Dragons","Early 21st Century Romanticism",
+        "Intermediate Documentary Filmmaking","Intro to Political Science",
+        "Custody Law and Eastern European Diplomacy","Critical Film Studies",
+        "Competitive Wine Tasting","Paradigms of Human Memory",
+        "Applied Anthropology and Culinary Arts","Biology 101","Geography of Global Conflict",
+        "Remedial Chaos Theory","Competitive Ecology","Studies in Modern Movement",
+        "Foosball and Nocturnal Vigilantism","Regional Holiday Music",
+        "Contemporary Impressionists","Urban Matrimony and the Sandwich Arts",
+        "Digital Exploration of Interior Design","Pillows and Blankets",
+        "Origins of Vampire Mythology","Virtual Systems Analysis","Digital Estate Planning",
+        "Introduction to Finality","History 101","Paranormal Parentage",
+        "Conventions of Space and Time","Alternative History of the German Invasion",
+        "Cooperative Escapism in Familial Relations","Advanced Documentary Filmmaking",
+        "Economics of Marine Biology","Intro to Felt Surrogacy","Intro to Knots",
+        "Basic Human Anatomy","Advanced Introduction to Finality","Introduction to Teaching",
+        "Cooperative Polygraphy","Geothermal Escapism","Analysis of Cork-Based Networking",
+        "App Development and Condiments","VCR Maintenance and Educational Publishing","Advanced Advanced Dungeons & Dragons"];
+
+        var item = names[Math.floor(Math.random()*names.length)];
+        return item;
+    };
 $(function() {
 
     $('#signIn .password').keypress(function(e) {
@@ -18,8 +50,6 @@ $(function() {
     $('#signUp .button').click(function() {
         createUser();
     })
-
-
     function setStorage(val) {
         var customEvent = document.createEvent('Event');
         customEvent.initEvent('setUser', true, true);
