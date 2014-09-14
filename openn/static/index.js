@@ -38,7 +38,6 @@ $(function() {
                 // password2: $('#signup-password2').val()
             }
         }).done(function(data) {
-            console.log(data);
             if (data.errors) {
                 switch (data.errors) {
                     case 'username_taken':
@@ -64,7 +63,6 @@ $(function() {
 
 
     function login() {
-        console.log('hi');
         $.ajax({
             url: "/authenticate",
             dataType: 'json',
