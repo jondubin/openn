@@ -13,6 +13,7 @@
     <script src="{{ url_for('static', filename='main.js') }} "></script>
     <script src="{{ url_for('static', filename='jquery.tablesorter.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.default.css') }}">
+    <script src="http://code.highcharts.com/highcharts.js"></script>
 
 
 </head>
@@ -89,6 +90,59 @@
         
     </tbody>
 </table>
+<div id="container" style="height: 300px"></div>
+
+                    <script>
+                       $('#container').highcharts({
+
+                            chart: {
+                                renderTo: 'container',
+                                type: 'column'
+                            },
+
+                            title: {
+                                text: 'Grade Distribution for Underwater Basket Weaving'
+                            },
+
+                            legend: {
+                                enabled: false
+                            },
+
+                            xAxis: {
+                                categories: ['A+', 'A', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
+                            },
+
+                            yAxis: {
+                                title: {
+                                    text: 'Students'
+                                }
+                            },
+
+                            tooltip: {
+                                valueSuffix: ' students',
+                                pointFormat: '<b>{point.y}</b>',
+                            },
+
+                            plotOptions: {
+                                column: {
+                                    groupPadding: 0,
+                                    pointPadding: 0,
+                                    borderWidth: 0,
+                                    shadow: true
+                                }
+                            },
+
+                            credits: {
+                                enabled: false
+                            },
+
+                            series: [{
+                                name: '',
+                                data: []
+                            }]
+
+                        });
+                    </script>
     </script>
 
     <script type='text/html' id="searchContent">

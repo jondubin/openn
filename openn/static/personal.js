@@ -4,7 +4,8 @@ $.ajax({
 	method: 'GET',
 	success: function(data) {
 		var jsonData = data.data;
-		var gradesArray = [];
+		var gradesArray = data.graphData;
+		console.log(gradesArray);
 		for (var property in jsonData) {
 			var dataClassCode = property;
 			var dataClass = dataClassCode.substring(0, dataClassCode.length-6);
@@ -19,13 +20,12 @@ $.ajax({
 				sem = "Fall";
 			}
 			var dataGrade = jsonData[property][0];
-			gradesArray.push(dataGrade);
 			var dataTitle = jsonData[property][1];
 			$("#tableBody").append("<tr><td>"+dataClass+"</td><td>"+dataTitle+"</td><td>"+sem+" "+year+"</td><td>"+dataGrade+"</td></tr>")
 		};
 
-		
-		
+
+
 		$(document).ready(function() 
 		{ 
 
