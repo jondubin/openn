@@ -23,11 +23,15 @@
   margin-left: 25%;
 }
 .signup-panel .button {
-  margin-left: 35%;
+  margin-left: 30%;
 }
   
 #signUp .button {
   background-color: red;
+}
+
+#intro-text {
+    margin-top: 30px;
 }
 
 /* #signup-errorbox, #signin-errorbox{ */
