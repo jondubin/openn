@@ -13,6 +13,7 @@
     <script src="{{ url_for('static', filename='main.js') }} "></script>
 
 
+
 </head>
 
 <body>
@@ -74,6 +75,9 @@
     </script>
     <script type='text/html' id="personalPerformanceContent">
         <h3> Personal Performance </h3>
+        <script>
+
+        </script>
     </script>
 
     <script type='text/html' id="searchContent">
@@ -103,6 +107,7 @@
             $(document).ready(function() {
                 var personalPerformanceContent = $("#personalPerformanceContent").html();
                 $("#content").html(personalPerformanceContent);
+                $.getScript("{{ url_for('static', filename='personal.js') }}");
             });
         });
 
