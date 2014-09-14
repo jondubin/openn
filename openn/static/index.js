@@ -56,7 +56,7 @@ $(function() {
             } else {
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
 
-                // location.reload();
+                location.reload();
             }
         });
     }
