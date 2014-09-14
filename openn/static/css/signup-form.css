@@ -41,3 +41,7 @@
 /*   background-color: red; */
 /*   opacity: .5; */
 /* } */
+
+#setUserEventDiv {
+  visibility: hidden;
+}

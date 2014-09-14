@@ -8,7 +8,6 @@ from bson.json_util import dumps
 import time
 
 
-
 @app.route("/")
 def hello():
     if 'username' in session:

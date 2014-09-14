@@ -9,6 +9,9 @@ app.config['DEBUG'] = True
 app.config['MONGO_DBNAME'] = 'opencourse'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 bcrypt = Bcrypt(app)
+app.config['REGUSER'] = 'UPENN_OD_emtz_1000643'
+app.config['REGPW'] = 'o448e5mnbutjcji5ufofo630ur'
+app.config['pcr_token'] = 'qL_UuCVxRBUmjWbkCdI554grLjRMPY'
 
 
 
@@ -25,3 +28,4 @@ mongo.authenticate(username, password)
 
 import openn.users
 import openn.db
+import openn.graphdata
