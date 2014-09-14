@@ -27,15 +27,7 @@
     
     <div class="row">
         <div class="large-3 columns">
-<<<<<<< HEAD
             <h1><a href="http://openn.me" id='logo'><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
-=======
-            <h1>
-                <a href="#" id='logo'>
-                    <img src="{{ url_for('static', filename='img/logo.png') }}" />
-                </a>
-            </h1>
->>>>>>> 86f4ef199aebacdcd58c0e3187d88c7dc982de59
         </div>
         <div class="large-9 columns">
             <div id="logout">
@@ -52,8 +44,8 @@
         <div class="large-3  columns">
 
             <ul class="side-nav">
-                <li><a href="#" id='home'>Home</a>
-                </li>
+                <!--<li><a href="#" id='home'>Home</a>
+                </li>-->
                 <li><a href="#" id='personal'>Personal History</a>
                 </li>
                 <li><a href="#" id='search'>Course Search</a>
@@ -68,11 +60,9 @@
 
         </div>
 
-        <div class="large-9 columns" id="content">
+       <div class="large-9 columns" id="content">
 
-            <h3>Page Title
-                <small>Page subtitle</small>
-            </h3>
+            <!--<h3>Page Title</h3>
 
             <p>Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin. Venison tail chuck pork chop, andouille ball tip beef ribs flank boudin bacon. Salami andouille pork belly short ribs flank cow. Salami sirloin turkey kielbasa. Sausage venison pork loin leberkas chuck short loin, cow ham prosciutto pastrami jowl. Ham hock jerky tri-tip, fatback hamburger shoulder swine pancetta ground round. Tri-tip prosciutto meatball turkey, brisket spare ribs shankle chuck cow chicken ham hock boudin meatloaf jowl.</p>
 
@@ -80,18 +70,18 @@
 
             <p>Hamburger bresaola turkey t-bone, leberkas salami pork chop ham hock beef ribs. Rump biltong meatball venison, short ribs pork loin shank shankle corned beef beef. Cow salami jowl short loin hamburger fatback. Short ribs pork belly shoulder pastrami drumstick salami corned beef ham hock bresaola. Swine filet mignon cow sausage ball tip. Cow ribeye ground round, sausage pork loin pig beef ball tip turkey boudin.</p>
 
-            <p>Prosciutto ball tip filet mignon andouille frankfurter chicken rump sausage meatball. Filet mignon meatloaf ground round andouille ham hock pork. Bresaola short loin meatball chuck hamburger pig. Turkey venison chuck, tongue fatback tail swine jerky corned beef shank kielbasa prosciutto ribeye ham tri-tip. Rump bacon pork belly meatloaf shoulder short loin meatball kielbasa pork loin tongue bresaola brisket corned beef jowl prosciutto. Beef ribs shankle short ribs pork belly corned beef fatback pork chop tongue biltong boudin strip steak sirloin meatloaf pancetta.</p>
+            <p>Prosciutto ball tip filet mignon andouille frankfurter chicken rump sausage meatball. Filet mignon meatloaf ground round andouille ham hock pork. Bresaola short loin meatball chuck hamburger pig. Turkey venison chuck, tongue fatback tail swine jerky corned beef shank kielbasa prosciutto ribeye ham tri-tip. Rump bacon pork belly meatloaf shoulder short loin meatball kielbasa pork loin tongue bresaola brisket corned beef jowl prosciutto. Beef ribs shankle short ribs pork belly corned beef fatback pork chop tongue biltong boudin strip steak sirloin meatloaf pancetta.</p> -->
 
-        </div>
+        </div> 
 
     </div>
 
-    <script type='text/html' id="homeContent">
+    <!--<script type='text/html' id="homeContent">
     <h3> Home </h3>
-    </script>
+    </script> -->
     <!-- ~~~~~~~~~~~~~Personal Page~~~~~~~~~~~~~~~~ -->
     <script type='text/html' id="personalPerformanceContent">
-        <h3>Personal Performance</h3>
+        <h3>Personal History</h3>
         <table id="personalTable" class="tablesorter">
             <thead>
                 <tr>
@@ -105,39 +95,51 @@
 
             </tbody>
         </table>
-        <div id="container" style="height: 300px"></div >
+        <div id="containerPersonal" style="height: 300px"></div >
     </script>
     <!-- ~~~~~~~~~~~~~Search Page~~~~~~~~~~~~~~~~ -->
 
     <script type='text/html' id="searchContent">
     <h3> Course Search </h3>
-    <div class="ui-widget">
+    <div class="ui-widget" id="searchDropDown">
         <label for="tags">Tags:</label>
         <input id="tags">
     </div> 
-    <div id="searchButton"></div>
+    <!--<div id="searchButton" ></div>-->
+    <div id="containerSearch" style="height: 300px"></div >
+
     </script>
     <!-- ~~~~~~~~~~~~~School Page~~~~~~~~~~~~~~~~ -->
 
     <script type='text/html' id="schoolContent">
-    <h3> School </h3>
+    <h3>School at a Glance</h3>
     </script>
 
     <script>
-    $("#logo").click(function() {
+    
+    /*$("#logo").click(function() {
         $(document).ready(function() {
             var homeContent = $("#homeContent").html();
             $("#content").html(homeContent);
         });
-    });
+    }); */
 
-    $("#home").click(function() {
+    /*$("#home").click(function() {
         $(document).ready(function() {
             var homeContent = $("#homeContent").html();
             $("#content").html(homeContent);
         });
+    }); */
+
+    $(document).ready(function() {
+        $(document).ready(function() {
+            var personalPerformanceContent = $("#personalPerformanceContent").html();
+            $("#content").html(personalPerformanceContent);
+            ajaxCall();
+        });
     });
 
+    
     $("#personal").click(function() {
         $(document).ready(function() {
             var personalPerformanceContent = $("#personalPerformanceContent").html();

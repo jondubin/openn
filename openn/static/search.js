@@ -1,13 +1,15 @@
 var gradesArray = [];
 
+
 function ajaxCall() {
     $.ajax({
-        url: "/personalPerformance",
+        url: "/search",
         datatype: 'json',
         method: 'GET',
         success: function(data) {
             var jsonData = data.data;
             gradesArray = data.graphData;
+            console.log(gradesArray);
             for (var property in jsonData) {
                 var dataClassCode = property;
                 var dataClass = dataClassCode.substring(0, dataClassCode.length - 6);
@@ -23,64 +25,24 @@ function ajaxCall() {
                 }
                 var dataGrade = jsonData[property][0];
                 var dataTitle = jsonData[property][1];
-                $("#tableBody").append("<tr><td>" + dataClass + "</td><td>" + dataTitle + "</td><td>" + sem + " " + year + "</td><td>" + dataGrade + "</td></tr>")
             };
-            tableSorter();
-            personalHistogram();
+            searchHistogram();
         }
     });
 }
 
-function tableSorter() {
-    $.tablesorter.addParser({
-        // set a unique id 
-        id: 'positions',
-        is: function(s) {
-            // return false so this parser is not auto detected 
-            return false;
-        },
-        format: function(s) {
-            // format your data for normalization 
-            return s
-                .replace("A+", "a")
-                .replace("A", "b")
-                .replace("A-", "c")
-                .replace("B+", "d")
-                .replace("B", "e")
-                .replace("B-", "f")
-                .replace("C+", "g")
-                .replace("C", "h")
-                .replace("C-", "i")
-                .replace("D+", "j")
-                .replace("D", "k")
-                .replace("F-", "l")
-        },
-        // set type, either numeric or text 
-        type: 'text'
-    });
 
-    $("#personalTable").tablesorter({
-        headers: {
-            2: {
-                sortInitialOrder: 'asc'
-            },
-            3: {
-                sorter: 'positions',
-            }
-        }
-    });
-}
 
-function personalHistogram() {
-    $('#containerPersonal').highcharts({
+function searchHistogram() {
+    $('#containerSearch').highcharts({
 
         chart: {
-            renderTo: 'containerPersonal',
+            renderTo: 'containerSearch',
             type: 'column'
         },
 
         title: {
-            text: 'Your Personal Grade Distribution'
+            text: 'Grade Distribution for' + ''
         },
 
         legend: {

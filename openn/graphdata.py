@@ -90,16 +90,16 @@ def iterateClasses(data):
 @app.route('/getProf', methods=['GET'])
 def getProf():
     arg = request.args['prof'].upper()
-    dept = request.args['dept'].upper()
+    # dept = request.args['dept'].upper()
     lastname = arg.split('-')[-1]
     firstname = arg.split('-')[0]
     prof = profHash.profHash[lastname]
     for person in prof: 
-        if dept in person["depts"] and person["first_name"].split(" ")[0] == firstname:
+        if  person["first_name"].split(" ")[0] == firstname:
             prof_id = person['id']
             profClasses = requests.get(baseURL + 'instructors/' + prof_id + "?token=public")
             data = yaml.load(profClasses.text)
             grades = iterateClasses(data)
-            return jsonify(grades = grades)
+            return jsonify(grades = genGrades(grades))
             #have list of professor classes
     return jsonify(error = "no data yet")       

@@ -17,8 +17,9 @@
 
 #searchButton {
     display: inline-block;
-    position: relative;
-    height: 20px;
+    position: absolute;
+    height: 30px;
+    padding-top: 10px;
     width: 50px;
     background-color: #AD33FF;
     color: white;
