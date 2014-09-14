@@ -4,15 +4,15 @@ function logout() {
         dataType: 'json',
         method: 'GET'
     }).done(function() {
+        setStorage();
         location.reload();
     });
 }
 
-function setStorage(val) {
+function setStorage() {
     var customEvent = document.createEvent('Event');
     customEvent.initEvent('removeUser', true, true);
     hiddenDiv = document.getElementById('setUserRemoveDiv');
-    $('#setUserRemoveDiv').text(val);
     hiddenDiv.dispatchEvent(customEvent);
 }
 
