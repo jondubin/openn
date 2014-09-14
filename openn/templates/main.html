@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="large-3 columns">
-            <h1><img src="{{ url_for('static', filename='img/logo.png') }}"/></h1>
+            <h1><a href="#" id='logo'><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
         </div>
         <div class="large-9 columns">
             <div id="logout">
@@ -39,7 +39,7 @@
             <ul class="side-nav">
                 <li><a href="#" id='home'>Home</a>
                 </li>
-                <li><a href="#" id='personal'>Personal History</a>
+                <li><a href="#" id='personal'>Personal Performance</a>
                 </li>
                 <li><a href="#" id='search'>Course Search</a>
                 </li>
@@ -67,25 +67,62 @@
 
         </div>
 
-
-
     </div>
 
+    <script type='text/html' id="homeContent">
+        <h3> Home </h3>
+    </script>
+    <script type='text/html' id="personalPerformanceContent">
+        <h3> Personal Performance </h3>
+    </script>
+
+    <script type='text/html' id="searchContent">
+        <h3> Course Search </h3>
+    </script>
+
+    <script type='text/html' id="schoolContent">
+        <h3> School </h3>
+    </script>
 
     <script>
-          $("#home").click(function() {
-            $("#content").html("<h1>yo1</h1>");
+        $("#logo").click(function() {
+         $(document).ready(function() {
+                var homeContent = $("#homeContent").html();
+                $("#content").html(homeContent);
+            });
         });
-        $("#personal").click(function() {
-            $("#content").html("<h1>yo2</h1>");
+
+        $("#home").click(function() {
+            $(document).ready(function() {
+                var homeContent = $("#homeContent").html();
+                $("#content").html(homeContent);
+            });
         });
+
+          $("#personal").click(function() {
+            $(document).ready(function() {
+                var personalPerformanceContent = $("#personalPerformanceContent").html();
+                $("#content").html(personalPerformanceContent);
+            });
+        });
+
+     
         $("#search").click(function() {
-            $("#content").html("<h1>yo3</h1>");
+            $(document).ready(function() {
+                var searchContent = $("#searchContent").html();
+                $("#content").html(searchContent);
+            });
         });
+
+     
         $("#school").click(function() {
-            $("#content").html("<h1>yo4</h1>");
+            $(document).ready(function() {
+                var schoolContent = $("#schoolContent").html();
+                $("#content").html(schoolContent);
+            });
         });
-    </script>
+
+     </script>
 
     <footer class="row">
         <div class="large-12 columns">
