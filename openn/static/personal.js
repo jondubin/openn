@@ -99,7 +99,7 @@ function personalHistogram() {
         },
 
         tooltip: {
-            valueSuffix: ' students',
+            valueSuffix: ' classes',
             pointFormat: '<b>{point.y}</b>',
         },
 
