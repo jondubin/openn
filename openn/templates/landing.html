@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Openn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup-form.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <script src="{{ url_for('static', filename='jquery.min.js') }} "></script>
+    <script src="{{ url_for('static', filename='js/vendor/modernizr.js') }} "></script>
+    <script src="{{ url_for('static', filename='highcharts.js') }} "></script>
+    <script src="{{ url_for('static', filename='jquery.tablesorter.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.default.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }} "></script>
+    <script src="{{ url_for('static', filename='personal.js') }} "></script>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="row">
+        <div class="large-3 columns">
+            <h1><a href="#" id='logo'><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
+        </div>
+        <div class="large-9 columns">
+            <div id="logout">
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+
+        <div class="large-3  columns">
+
+         <!--    <ul class="side-nav">
+                <li><a href="#" id='home'>Home</a>
+                </li>
+                <li><a href="#" id='personal'>Personal Performance</a>
+                </li>
+                <li><a href="#" id='search'>Course Search</a>
+                </li>
+                <li><a href="#" id='school'>School at a Glance</a>
+                </li>
+            </ul> -->
+
+            <!-- <p>
+            <img src="http://placehold.it/320x240&text=Ad" />
+        </p> -->
+
+        </div>
+
+        <div class="large-9 columns" id="content">
+
+            <h3>Page Title <small>Page subtitle</small></h3>
+
+            <p>Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin. Venison tail chuck pork chop, andouille ball tip beef ribs flank boudin bacon. Salami andouille pork belly short ribs flank cow. Salami sirloin turkey kielbasa. Sausage venison pork loin leberkas chuck short loin, cow ham prosciutto pastrami jowl. Ham hock jerky tri-tip, fatback hamburger shoulder swine pancetta ground round. Tri-tip prosciutto meatball turkey, brisket spare ribs shankle chuck cow chicken ham hock boudin meatloaf jowl.</p>
+
+            <p>Ground round pastrami pork loin tenderloin jerky. Jerky spare ribs biltong, ham hock ham capicola pork. Jerky turducken pork, meatloaf sausage capicola swine corned beef turkey short loin. Tongue prosciutto pork loin, ground round spare ribs venison kielbasa strip steak.</p>
+
+            <p>Hamburger bresaola turkey t-bone, leberkas salami pork chop ham hock beef ribs. Rump biltong meatball venison, short ribs pork loin shank shankle corned beef beef. Cow salami jowl short loin hamburger fatback. Short ribs pork belly shoulder pastrami drumstick salami corned beef ham hock bresaola. Swine filet mignon cow sausage ball tip. Cow ribeye ground round, sausage pork loin pig beef ball tip turkey boudin.</p>
+
+            <p>Prosciutto ball tip filet mignon andouille frankfurter chicken rump sausage meatball. Filet mignon meatloaf ground round andouille ham hock pork. Bresaola short loin meatball chuck hamburger pig. Turkey venison chuck, tongue fatback tail swine jerky corned beef shank kielbasa prosciutto ribeye ham tri-tip. Rump bacon pork belly meatloaf shoulder short loin meatball kielbasa pork loin tongue bresaola brisket corned beef jowl prosciutto. Beef ribs shankle short ribs pork belly corned beef fatback pork chop tongue biltong boudin strip steak sirloin meatloaf pancetta.</p>
+
+        </div>
+
+    </div>
+
+    <script type='text/html' id="homeContent">
+        <h3> Home </h3>
+    </script>
+    <script type='text/html' id="personalPerformanceContent">
+        <h3> Personal Performance </h3>
+        <table id="personalTable" class="tablesorter">
+        <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Semester and Year</th>
+            <th class='sorter-grades'>Grade</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        
+    </tbody>
+</table>
+<div id="container" style="height: 300px"></div>
+
+            
+    </script>
+
+    <script type='text/html' id="searchContent">
+        <h3> Course Search </h3>
+    </script>
+
+    <script type='text/html' id="schoolContent">
+        <h3> School </h3>
+    </script>
+
+    <script>
+        $("#logo").click(function() {
+         $(document).ready(function() {
+                var homeContent = $("#homeContent").html();
+                $("#content").html(homeContent);
+            });
+        });
+
+        $("#home").click(function() {
+            $(document).ready(function() {
+                var homeContent = $("#homeContent").html();
+                $("#content").html(homeContent);
+            });
+        });
+
+          $("#personal").click(function() {
+            $(document).ready(function() {
+                var personalPerformanceContent = $("#personalPerformanceContent").html();
+                $("#content").html(personalPerformanceContent);
+                ajaxCall();
+            });
+        });
+
+     
+        $("#search").click(function() {
+            $(document).ready(function() {
+                var searchContent = $("#searchContent").html();
+                $("#content").html(searchContent);
+            });
+        });
+
+     
+        $("#school").click(function() {
+            $(document).ready(function() {
+                var schoolContent = $("#schoolContent").html();
+                $("#content").html(schoolContent);
+            });
+        });
+
+     </script>
+
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr/>
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>© Copyright 2014</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#">FAQ</a>
+                        </li>
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="setUserRemoveDiv" style="visibility:hidden"></div>
+</body>
+
+</html>

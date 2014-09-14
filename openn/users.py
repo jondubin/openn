@@ -10,9 +10,12 @@ import time
 
 @app.route("/")
 def hello():
-    if 'username' in session:
-        return render_template('main.html')
-    return render_template('index.html')
+    if 'username' not in session: 
+        return render_template('index.html')
+    user = mongo.students.find_one({'username': session['username']})
+    if 'grades' not in user:
+        return render_template('landing.html')
+    else: return render_template('main.html')
 
 #function to log them in, assumes using a form
 ##if they cannot log in, will redirect them 
@@ -68,23 +71,21 @@ def create():
         return jsonify(errors = 'pass_none')
 
     #Let's put the post in the MongoDB database
-    if pw1:
-        # Hash a password for the first time, with a randomly-generated salt
-        # hashed_password = bcrypt.hashpw(pw1, bcrypt.gensalt(12))
-        hashed_password = bcrypt.generate_password_hash(pw1, 12)
-        user_id = mongo.students.insert({'username' : username.lower(),
-                                'password': hashed_password
-                                })
-        app.permanent_session_lifetime = timedelta(days=365)
-        # Assign session data for user
-        session.permanent = True
-        session['id'] = dumps(user_id)
-        session['username'] = username
+    # Hash a password for the first time, with a randomly-generated salt
+    # hashed_password = bcrypt.hashpw(pw1, bcrypt.gensalt(12))
+    hashed_password = bcrypt.generate_password_hash(pw1, 12)
+    user_id = mongo.students.insert({'username' : username.lower(),
+                            'password': hashed_password
+                            })
+    app.permanent_session_lifetime = timedelta(days=365)
+    # Assign session data for user
+    session.permanent = True
+    session['id'] = dumps(user_id)
+    session['username'] = username
+    user = mongo.students.find_one({'username': session['username']})
+    return jsonify(user = username)
 
-        return jsonify(user = username)
-    else:
-        # Passwords did not match
-        return jsonify(errors = 'pass_nomatch')
+
 
 @app.route("/logout/", methods = ['GET'])
 def logout():

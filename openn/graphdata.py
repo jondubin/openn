@@ -68,14 +68,21 @@ def getSection():
     return courseName
 
 def iterateClasses(data):
+    grades = []
     for section in data['result']['sections']['values']:
         alias = section['primary_alias']
-        pdb.set_trace()
         # s = requests.get(baseURL + 'Course/' + section['id'] + "?token=public")
-        s = penncoursereview.Course(int(section['id']))
-        pdb.set_trace()
-        semester = s['semester']
-        t = requests.get('/' + alias + '-' + semester)
+        cla = penncoursereview.Course(int(section['id'].split('-')[0]))
+        semester = cla['semester']
+        course = '-'.join(alias.split('-')[0:2])
+        courseObj = mongo.classes.find_one({course: {'$exists': True}})
+        section_id = alias + '-' + semester
+        if not courseObj == None:
+            if section_id in courseObj[course]:
+
+                grades = grades + courseObj[course][alias + '-' + semester]['grades']
+    return grades
+
 
 
 ## @param prof Rajiv Gandhi
@@ -92,6 +99,7 @@ def getProf():
             prof_id = person['id']
             profClasses = requests.get(baseURL + 'instructors/' + prof_id + "?token=public")
             data = yaml.load(profClasses.text)
-            iterateClasses(data)
+            grades = iterateClasses(data)
+            return jsonify(grades = grades)
             #have list of professor classes
-           
+    return jsonify(error = "no data yet")       
