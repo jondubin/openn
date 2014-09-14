@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Openn</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup-form.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <script src="{{ url_for('static', filename='jquery.min.js') }} "></script>
@@ -39,135 +40,89 @@
 
     <div class="row">
 
-        <div class="large-3  columns">
+        <div class="large-7  columns">
 
-         <!--    <ul class="side-nav">
-                <li><a href="#" id='home'>Home</a>
-                </li>
-                <li><a href="#" id='personal'>Personal Performance</a>
-                </li>
-                <li><a href="#" id='search'>Course Search</a>
-                </li>
-                <li><a href="#" id='school'>School at a Glance</a>
-                </li>
-            </ul> -->
+            <h3>Welcome to Openn</h3>
 
-            <!-- <p>
-            <img src="http://placehold.it/320x240&text=Ad" />
-        </p> -->
+            <p>Pretty soon, you'll have access to the largest database of course grade distributions available at the University of Pennsylvania. To get started, we ask that you contribute to the anonymous database by importing your own grade history. You can do this with our Chrome extension by following the directions below. </p> 
 
+            <p>So far, <strong> {{numUsers}} students </strong> have imported their grades from Penn InTouch. Importing your grades is <strong>completely anonymous</strong>, and <strong>we do not collect any identifying information</strong>, aside from your past course history, performance, graduation year, and school. Feel free to check out the source code on GitHub if you are interested in how the extension functions. We believe in openness and transparency above all, and we hope you find this project useful.</p>
         </div>
-
-        <div class="large-9 columns" id="content">
-
-            <h3>Page Title <small>Page subtitle</small></h3>
-
-            <p>Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin. Venison tail chuck pork chop, andouille ball tip beef ribs flank boudin bacon. Salami andouille pork belly short ribs flank cow. Salami sirloin turkey kielbasa. Sausage venison pork loin leberkas chuck short loin, cow ham prosciutto pastrami jowl. Ham hock jerky tri-tip, fatback hamburger shoulder swine pancetta ground round. Tri-tip prosciutto meatball turkey, brisket spare ribs shankle chuck cow chicken ham hock boudin meatloaf jowl.</p>
-
-            <p>Ground round pastrami pork loin tenderloin jerky. Jerky spare ribs biltong, ham hock ham capicola pork. Jerky turducken pork, meatloaf sausage capicola swine corned beef turkey short loin. Tongue prosciutto pork loin, ground round spare ribs venison kielbasa strip steak.</p>
-
-            <p>Hamburger bresaola turkey t-bone, leberkas salami pork chop ham hock beef ribs. Rump biltong meatball venison, short ribs pork loin shank shankle corned beef beef. Cow salami jowl short loin hamburger fatback. Short ribs pork belly shoulder pastrami drumstick salami corned beef ham hock bresaola. Swine filet mignon cow sausage ball tip. Cow ribeye ground round, sausage pork loin pig beef ball tip turkey boudin.</p>
-
-            <p>Prosciutto ball tip filet mignon andouille frankfurter chicken rump sausage meatball. Filet mignon meatloaf ground round andouille ham hock pork. Bresaola short loin meatball chuck hamburger pig. Turkey venison chuck, tongue fatback tail swine jerky corned beef shank kielbasa prosciutto ribeye ham tri-tip. Rump bacon pork belly meatloaf shoulder short loin meatball kielbasa pork loin tongue bresaola brisket corned beef jowl prosciutto. Beef ribs shankle short ribs pork belly corned beef fatback pork chop tongue biltong boudin strip steak sirloin meatloaf pancetta.</p>
-
-        </div>
+        <div class="large-5  columns"> </div>
 
     </div>
 
-    <script type='text/html' id="homeContent">
-        <h3> Home </h3>
-    </script>
-    <script type='text/html' id="personalPerformanceContent">
-        <h3> Personal Performance </h3>
-        <table id="personalTable" class="tablesorter">
-        <thead>
-        <tr>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Semester and Year</th>
-            <th class='sorter-grades'>Grade</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody">
-        
-    </tbody>
-</table>
-<div id="container" style="height: 300px"></div>
+    <div class="row">
 
-            
-    </script>
+        <div class="large-7  columns">
 
-    <script type='text/html' id="searchContent">
-        <h3> Course Search </h3>
-    </script>
+            - Make sure you are using Google Chrome. Install our extension, available <a href="#">here</a>. 
 
-    <script type='text/html' id="schoolContent">
-        <h3> School </h3>
-    </script>
+        </div>
+        <div class = "large-5 columns"><a href='#'><img src="{{ url_for('static', filename='img/chrome.png') }}"></img></a></div> 
+    </div>
 
-    <script>
-        $("#logo").click(function() {
-         $(document).ready(function() {
-                var homeContent = $("#homeContent").html();
-                $("#content").html(homeContent);
-            });
-        });
+<br>
+    <div class="row">
 
-        $("#home").click(function() {
-            $(document).ready(function() {
-                var homeContent = $("#homeContent").html();
-                $("#content").html(homeContent);
-            });
-        });
+        <div class="large-7  columns">
 
-          $("#personal").click(function() {
-            $(document).ready(function() {
-                var personalPerformanceContent = $("#personalPerformanceContent").html();
-                $("#content").html(personalPerformanceContent);
-                ajaxCall();
-            });
-        });
+            - Go to <a href="https://pennintouch.apps.upenn.edu/pennInTouch/jsp/fast2.do">Penn Intouch</a> and login. On the sidebar, expand the "Academic records" section and go to "View grades."
 
-     
-        $("#search").click(function() {
-            $(document).ready(function() {
-                var searchContent = $("#searchContent").html();
-                $("#content").html(searchContent);
-            });
-        });
+        </div>
+        <div class = "large-5 columns"><a href='https://pennintouch.apps.upenn.edu/pennInTouch/jsp/fast2.do'><img src="{{ url_for('static', filename='img/sidebar.png') }}"></img></a></div> 
+    </div>
+    <br>
+    <div class="row">
 
-     
-        $("#school").click(function() {
-            $(document).ready(function() {
-                var schoolContent = $("#schoolContent").html();
-                $("#content").html(schoolContent);
-            });
-        });
+        <div class="large-7  columns">
 
-     </script>
+            - On the "View grades" page, click on the large "Import grades into Openn" button at the top. Wait for the import process to finish. When it completes, the button will change from green to blue. 
 
-    <footer class="row">
-        <div class="large-12 columns">
-            <hr/>
-            <div class="row">
-                <div class="large-6 columns">
-                    <p>© Copyright 2014</p>
-                </div>
-                <div class="large-6 columns">
-                    <ul class="inline-list right">
-                        <li><a href="#">FAQ</a>
-                        </li>
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class = "large-5 columns"><img src="{{ url_for('static', filename='img/import.png') }}"></img></div> 
+    </div>
+
+    <br>
+    <div class="row">
+
+        <div class="large-7  columns">
+
+            - When the import finishes, you can close Penn InTouch and can even uninstall the Openn Chrome extension. Return to <a href="http://openn.me">Openn</a> and <strong>refresh the page</strong>. You now have access to the complete distribution database as well as powerful personal analytics. Enjoy.
+
+        </div>
+        <div class = "large-5 columns"><img src="{{ url_for('static', filename='img/importComplete.png') }}"></img></div> 
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+    <footer class="row" id="footer">
+    <div class="large-12 columns">
+        <hr/>
+        <div class="row">
+            <div class="large-8 columns">
+                <p>© Copyright 2014. From the makers of PennCoursePlus: Fifi Yeung and Jonathan Dubin</p>
+            </div>
+            <div class="large-4 columns">
+                <ul class="inline-list right">
+                    <li><a href="#">FAQ</a>
+                    </li>
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Contact Us</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <div id="setUserRemoveDiv" style="visibility:hidden"></div>
+<div id="setUserRemoveDiv" style="visibility:hidden"></div>
 </body>
 
 </html>

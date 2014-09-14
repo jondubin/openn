@@ -7,6 +7,7 @@
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 </head>
 
 <body>
@@ -82,31 +83,29 @@
     </div>
 
 
-
-    <footer class="row">
-        <div class="large-12 columns">
-            <hr/>
-            <div class="row">
-                <div class="large-6 columns">
-                    <p>© Copyright no one at all. Go to town.</p>
-                </div>
-                <div class="large-6 columns">
-                    <ul class="inline-list right">
-                        <li><a href="#">Link 1</a>
-                        </li>
-                        <li><a href="#">Link 2</a>
-                        </li>
-                        <li><a href="#">Link 3</a>
-                        </li>
-                        <li><a href="#">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
+    <footer class="row" id="footer">
+    <div class="large-12 columns">
+        <hr/>
+        <div class="row">
+            <div class="large-8 columns">
+                <p>© Copyright 2014. From the makers of PennCoursePlus: Fifi Yeung and Jonathan Dubin</p>
+            </div>
+            <div class="large-4 columns">
+                <ul class="inline-list right">
+                    <li><a href="#">FAQ</a>
+                    </li>
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Contact Us</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-
+<div id="setUserRemoveDiv" style="visibility:hidden"></div>
 </body>
 
 </html>
+
