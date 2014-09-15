@@ -115,7 +115,9 @@ function searchHistogram() {
         yAxis: {
             title: {
                 text: 'Students'
-            }
+            }, 
+            allowDecimals:false
+
         },
         tooltip: {
             valueSuffix: ' classes',
