@@ -20,7 +20,7 @@ function userSchoolData(input, div, colors) {
             text: 'School Distribution of Openn Users'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '<b>{point.percentage:.1f}%</b>'
         },
         plotOptions: {
             pie: {
