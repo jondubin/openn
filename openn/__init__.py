@@ -16,8 +16,6 @@ import openn.secret
 server = 'ds033750.mongolab.com'
 port = 33750
 db_name = 'opencourse'
-# username = 'feef'
-# password = 'p3nn4pps'
 ##connect to database
 conn = MongoClient(server, port)
 mongo = conn[db_name]
