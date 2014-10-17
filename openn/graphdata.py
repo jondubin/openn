@@ -12,36 +12,38 @@ def getPersonal():
     username = session['username']
     user = mongo.students.find_one({'username': username})
     grades = [x[0] for x in user['grades'].itervalues()]
-    return jsonify(data = user['grades'],
-                   graphData = genGrades(grades))
+    return jsonify(data=user['grades'],
+                   graphData=genGrades(grades))
 
 def genGrades(grades):
     ret = []
-    numAp = 0
-    numA = 0
-    numAm = 0
-    numBp = 0
-    numB = 0
-    numBm = 0
-    numCp = 0
-    numC = 0
-    numCm = 0
-    numDp = 0
-    numD = 0
-    numDm = 0
+    numAp = numA = numAm = numBp = numB = numBm = numCp = 0
+    numC = numCm = numDp = numD = numDm = 0
     for i in grades: 
-        if i   == 'A+': numAp+=1
-        elif i == 'A': numA+=1
-        elif i == 'A-': numAm+=1
-        elif i == 'B+': numBp+=1
-        elif i == 'B': numB+=1
-        elif i == 'B-': numBm+=1
-        elif i == 'C+': numCp+=1
-        elif i == 'C': numC+=1
-        elif i == 'C-': numCm+=1
-        elif i == 'D+': numDp+=1
-        elif i == 'D': numD+=1
-        elif i == 'D-': numDm+=1    
+        if i == 'A+':
+            numAp += 1
+        elif i == 'A':
+            numA += 1
+        elif i == 'A-':
+            numAm += 1
+        elif i == 'B+':
+            numBp += 1
+        elif i == 'B':
+            numB += 1
+        elif i == 'B-':
+            numBm += 1
+        elif i == 'C+':
+            numCp += 1
+        elif i == 'C':
+            numC += 1
+        elif i == 'C-':
+            numCm += 1
+        elif i == 'D+':
+            numDp += 1
+        elif i == 'D':
+            numD += 1
+        elif i == 'D-':
+            numDm += 1
     return [numAp, numA, numAm, numBp, numB, numBm, numCp, numC, numCm, numDp, numD, numDm]
 
 ## @param course CIS-160
@@ -52,7 +54,7 @@ def getCourse():
     course = mongo.classes.find_one({arg: {'$exists': True}})
     for section, info in course[arg].iteritems():
         grades = grades + info['grades']
-    return jsonify(grades = genGrades(grades) )
+    return jsonify(grades=genGrades(grades))
 
 ## @param course CIS-160-001-2014A
 @app.route('/getSection', methods=['GET'])
@@ -63,9 +65,8 @@ def getSection():
     courseObj = mongo.classes.find_one({course: {'$exists': True}})
     section = courseObj[course][arg]
 
-    return jsonify(grades = genGrades(section['grades']))
-
-    return courseName
+    return jsonify(grades=genGrades(section['grades']))
+    # return courseName
 
 def iterateClasses(data):
     grades = []
@@ -77,12 +78,10 @@ def iterateClasses(data):
         course = '-'.join(alias.split('-')[0:2])
         courseObj = mongo.classes.find_one({course: {'$exists': True}})
         section_id = alias + '-' + semester
-        if not courseObj == None:
+        if courseObj:
             if section_id in courseObj[course]:
-
                 grades = grades + courseObj[course][alias + '-' + semester]['grades']
     return grades
-
 
 
 ## @param prof Rajiv Gandhi
@@ -95,14 +94,14 @@ def getProf():
     firstname = arg.split('-')[0]
     prof = profHash.profHash[lastname]
     for person in prof: 
-        if  person["first_name"].split(" ")[0] == firstname:
+        if person["first_name"].split(" ")[0] == firstname:
             prof_id = person['id']
             profClasses = requests.get(baseURL + 'instructors/' + prof_id + "?token=public")
             data = yaml.load(profClasses.text)
             grades = iterateClasses(data)
-            return jsonify(grades = genGrades(grades))
+            return jsonify(grades=genGrades(grades))
             #have list of professor classes
-    return jsonify(error = "no data yet")   
+    return jsonify(error="no data yet")
 
 @app.route('/userSchoolData', methods=['GET'])
 def getUserSchoolData():
@@ -113,23 +112,24 @@ def getUserSchoolData():
     for student in mongo.students.find():
         if 'school' in student: 
             if student['school'] == 'EAS': 
-                arr[0] +=1
+                arr[0] += 1
             elif student['school'] == 'COL':
-                arr[1] +=1
+                arr[1] += 1
             elif student['school'] == 'WHAR': 
-                arr[2] +=1
-            else:  #nurs
-                arr[3] +=1
+                arr[2] += 1
+            else:  # nursing
+                arr[3] += 1
             if int(student['year'].split(' ')[-1]) - curYear == 1:
-                yearArr[0] +=1 
+                yearArr[0] += 1
             if int(student['year'].split(' ')[-1]) - curYear == 2:
-                yearArr[1] +=1 
+                yearArr[1] += 1
             if int(student['year'].split(' ')[-1]) - curYear == 3:
-                yearArr[2] +=1 
+                yearArr[2] += 1
             if int(student['year'].split(' ')[-1]) - curYear == 4:
-                yearArr[3] +=1 
+                yearArr[3] += 1
 
-    return jsonify(schoolData = [['SEAS', arr[0]], ['COLLEGE', arr[1]], 
-                        ['WHARTON', arr[2]], ['NURSING', arr[3]]], 
-                    yearData =[['Senior', yearArr[0]], ['Junior', yearArr[1]], 
-                        ['Sophomore', yearArr[2]], ['Freshman', yearArr[3]]] )      
+    return jsonify(
+        schoolData=[['SEAS', arr[0]], ['COLLEGE', arr[1]],
+                    ['WHARTON', arr[2]], ['NURSING', arr[3]]],
+        yearData=[['Senior', yearArr[0]], ['Junior', yearArr[1]],
+                  ['Sophomore', yearArr[2]], ['Freshman', yearArr[3]]])

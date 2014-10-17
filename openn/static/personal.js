@@ -23,7 +23,10 @@ function ajaxCall() {
                 }
                 var dataGrade = jsonData[property][0];
                 var dataTitle = jsonData[property][1];
-                $("#tableBody").append("<tr><td>" + dataClass + "</td><td>" + dataTitle + "</td><td>" + sem + " " + year + "</td><td>" + dataGrade + "</td></tr>")
+                $("#tableBody").append("<tr><td>" + dataClass
+                    + "</td><td>" + dataTitle + "</td><td>"
+                    + sem + " " + year + "</td><td>" +
+                    dataGrade + "</td></tr>")
             };
             tableSorter();
             personalHistogram();
@@ -65,7 +68,7 @@ function tableSorter() {
                 sortInitialOrder: 'asc'
             },
             3: {
-                sorter: 'positions',
+                sorter: 'positions'
             }
         }
     });
@@ -100,7 +103,7 @@ function personalHistogram() {
 
         tooltip: {
             valueSuffix: ' classes',
-            pointFormat: '<b>{point.y}</b>',
+            pointFormat: '<b>{point.y}</b>'
         },
 
         plotOptions: {

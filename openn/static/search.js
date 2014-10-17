@@ -35,7 +35,6 @@ function ajaxCall() {
 
 function searchHistogram() {
     $('#containerSearch').highcharts({
-
         chart: {
             renderTo: 'containerSearch',
             type: 'column'
@@ -61,7 +60,7 @@ function searchHistogram() {
 
         tooltip: {
             valueSuffix: ' classes',
-            pointFormat: '<b>{point.y}</b>',
+            pointFormat: '<b>{point.y}</b>'
         },
 
         plotOptions: {

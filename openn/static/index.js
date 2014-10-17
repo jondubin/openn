@@ -27,29 +27,35 @@ function getRandomClassName(){
         "Cooperative Polygraphy","Geothermal Escapism","Analysis of Cork-Based Networking",
         "App Development and Condiments","VCR Maintenance and Educational Publishing","Advanced Advanced Dungeons & Dragons"];
 
-        var item = names[Math.floor(Math.random()*names.length)];
-        return item;
-    };
+        return names[Math.floor(Math.random()*names.length)]; // chooses random name from names
+    }
+
 $(function() {
 
-    $('#signIn .password').keypress(function(e) {
+    var signUp = $('#signUp');
+    var signIn = $('#signIn');
+
+    signIn.find('.password').keypress(function(e) {
         if (e.which == 13) {
             login();
         }
     });
-    $('#signUp .password').keypress(function(e) {
+
+   signIn.find('.button').click(function() {
+        login();
+    });
+
+    signUp.find(' .password').keypress(function(e) {
         if (e.which == 13) {
             createUser();
         }
     });
 
-    $('#signIn .button').click(function() {
-        login();
+    signUp.find('.button').click(function() {
+        createUser();
     });
 
-    $('#signUp .button').click(function() {
-        createUser();
-    })
+
     function setStorage(val) {
         var customEvent = document.createEvent('Event');
         customEvent.initEvent('setUser', true, true);
@@ -63,8 +69,8 @@ $(function() {
             dataType: 'json',
             method: 'GET',
             data: {
-                user: $('#signUp .username').val(),
-                password: $('#signUp .password').val(),
+                user: signUp.find('.username').val(),
+                password: signUp.find('.password').val()
                 // password2: $('#signup-password2').val()
             }
         }).done(function(data) {
@@ -85,7 +91,7 @@ $(function() {
                 $('#signup-errorbox').text(msg).fadeIn('fast');
             } else {
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
-                setStorage($('#signUp .username').val());
+                setStorage($('#signUp').find('.username').val());
                 location.reload();
             }
         });
@@ -98,8 +104,8 @@ $(function() {
             dataType: 'json',
             method: 'GET',
             data: {
-                user: $('#signIn .username').val(),
-                password: $('#signIn .password').val()
+                user: signIn.find('username').val(),
+                password: signIn.find('.password').val()
             }
         }).done(function(data) {
             console.log(data);
@@ -116,7 +122,7 @@ $(function() {
                 }
                 $('#signin-errorbox').text(msg).fadeIn('fast');
             } else {
-                setStorage($('#signIn .username').val());
+                setStorage(signIn.find('.username').val());
                 console.log('success');
                 // Successful sign-up! Let's refresh the page now after logging the user in on the server-side
                 location.reload();
