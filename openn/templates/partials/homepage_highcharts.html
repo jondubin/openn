@@ -1,0 +1,74 @@
+ <div class="large-12 columns">
+                  <!-- <br>
+                  <img src="{{ url_for('static', filename='img/dist.png')}}"></img> -->
+                  <div id="container" style="height: 300px"></div>
+
+                  <script>
+
+                    var className = getRandomClassName();
+                    function getRandomArbitrary(min, max) {
+                      return Math.round(Math.random() * (max - min) + min);
+                  }
+
+                  $('#container').highcharts({
+
+                    chart: {
+                        renderTo: 'container',
+                        type: 'column'
+                    },
+
+                    title: {
+                        text: 'Grade Distribution for "' + className +'"'
+                    },
+
+                    legend: {
+                        enabled: false
+                    },
+
+                    xAxis: {
+                        categories: ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
+                    },
+
+                    yAxis: {
+                        title: {
+                            text: 'Students'
+                        }
+                    },
+
+                    tooltip: {
+                        valueSuffix: ' students',
+                        pointFormat: '<b>{point.y}</b>'
+                    },
+
+                    plotOptions: {
+                        column: {
+                            groupPadding: 0,
+                            pointPadding: 0,
+                            borderWidth: 0,
+                            shadow: true
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    series: [{
+                        name: '',
+                        data: [getRandomArbitrary(0,5),
+                        getRandomArbitrary(20,40),
+                        getRandomArbitrary(25,40),
+                        getRandomArbitrary(45,55),
+                        getRandomArbitrary(43,45),
+                        getRandomArbitrary(35,40),
+                        getRandomArbitrary(23,30),
+                        getRandomArbitrary(13,20),
+                        getRandomArbitrary(11,17),
+                        getRandomArbitrary(4, 10),
+                        getRandomArbitrary(2, 8),
+                        getRandomArbitrary(0,5)]
+                    }]
+
+                });
+            </script>
+        </div>

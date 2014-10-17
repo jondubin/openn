@@ -14,9 +14,6 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"></link>
     <script src="{{ url_for('static', filename='highcharts.js') }} "></script>
     <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
-
-
-
 </head>
 
 <body>
@@ -29,10 +26,11 @@
 
     <div class="row">
         <div class="large-4 columns" id="intro-text">
-
             <h3>Welcome to Openn</h3>
-            Openn is the largest resource for class and professor grade distributions at the University of Pennsylvania. Use Openn to explore classes, compare professors, and gain insight into your own personal grade history. To get started, sign up for an account, or sign in at the right. Or, play around with the demo below.
-
+            Openn is the largest resource for class and professor grade distributions
+            at the University of Pennsylvania. Use Openn to explore classes, compare professors,
+            and gain insight into your own personal grade history. To get started, sign up for
+            an account, or sign in at the right. Or, play around with the demo below.
         </div>
 
         <div class="large-4 columns" id="signUp">
@@ -55,24 +53,16 @@
                             <input type="password" class="password" placeholder="password">
                             <small id="signup-errorbox" class="error" style="display:none"></small>
                         </div>
-
                     </div>
                 </form>
                 <div class="button">Sign Up</div>
-
-
-                    <!--  <p>Already have an account? <a href="#">Login here &raquo</a>
-                </p> -->
-
             </div>
-
-
         </div>
 
 
         <div class="large-4 columns" id="signIn">
             <div class="signup-panel">
-                <p class="welcome">Log In</p>
+                <p class="welcome">Sign In</p>
                 <form>
                     <div class="row collapse">
                         <div class="small-2  columns">
@@ -80,7 +70,6 @@
                         </div>
                         <div class="small-10  columns">
                             <input type="text" class="username" placeholder="username">
-
                         </div>
                     </div>
                     <div class="row collapse">
@@ -90,115 +79,22 @@
                         <div class="small-10 columns ">
                             <input type="password" class="password" placeholder="password">
                             <small id="signin-errorbox" class="error" style="display:none"></small>
-
                         </div>
                     </div>
                 </form>
-                <div class="button">Log In</div>
-                <!-- <p>Already have an account? <a href="#">Login here &raquo</a> -->
-                <!-- </p> -->
+                <div class="button">Sign In</div>
             </div>
         </div>
-
-
     </div>
 
-    <div class="row">
-     <br> <br>
-     <div class="large-12 columns">
-                  <!-- <br>
-                  <img src="{{ url_for('static', filename='img/dist.png')}}"></img> -->
-                  <div id="container" style="height: 300px"></div>
-
-                  <script>
-
-                    var className = getRandomClassName();
-                    function getRandomArbitrary(min, max) {
-                      return Math.round(Math.random() * (max - min) + min);
-                  }
-
-                  $('#container').highcharts({
-
-                    chart: {
-                        renderTo: 'container',
-                        type: 'column'
-                    },
-
-                    title: {
-                        text: 'Grade Distribution for "' + className +'"'
-                    },
-
-                    legend: {
-                        enabled: false
-                    },
-
-                    xAxis: {
-                        categories: ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F']
-                    },
-
-                    yAxis: {
-                        title: {
-                            text: 'Students'
-                        }
-                    },
-
-                    tooltip: {
-                        valueSuffix: ' students',
-                        pointFormat: '<b>{point.y}</b>'
-                    },
-
-                    plotOptions: {
-                        column: {
-                            groupPadding: 0,
-                            pointPadding: 0,
-                            borderWidth: 0,
-                            shadow: true
-                        }
-                    },
-
-                    credits: {
-                        enabled: false
-                    },
-
-                    series: [{
-                        name: '',
-                        data: [getRandomArbitrary(0,5), 
-                        getRandomArbitrary(20,40),
-                        getRandomArbitrary(25,40),
-                        getRandomArbitrary(45,55),
-                        getRandomArbitrary(43,45),
-                        getRandomArbitrary(35,40),
-                        getRandomArbitrary(23,30),
-                        getRandomArbitrary(13,20),
-                        getRandomArbitrary(11,17),
-                        getRandomArbitrary(4, 10), 
-                        getRandomArbitrary(2, 8),
-                        getRandomArbitrary(0,5)]
-                    }]
-
-                });
-            </script>
-        </div>
-
+    <div class="row"><!--The grade distribution example featured on main"-->
+        <br> <br>
+        {% include "/partials/homepage_highcharts.html" %}
     </div>
 
 
     <div id="setUserEventDiv"></div>
-        <!--  hello!!!
-    <div id="test"></div>
-    Login
-    <div id="login">
-        <input class="username">
-        <input class="password">
-        <button value="Submit"></button>
-    </div>
-    Create
-    <div id="create">
-        <input class="username">
-        <input class="password">
-        <button value="Submit"></button>
-    </div>
-    <button id="logout" value="Logout"></button>-->
+
     {% include "partials/footer.html" %}
 
     <div id="setUserRemoveDiv" style="visibility:hidden"></div>
