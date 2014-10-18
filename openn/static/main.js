@@ -25,18 +25,31 @@ function setupCourseSearch() {
         $("#tags").autocomplete({
             source: function(request, response) {
                 var results = $.ui.autocomplete.filter(data.data, request.term);
-
                 response(results.slice(0, 10));
             },
-            minlength: 3
+            minlength: 3,
+            select: function (event, item)
+            {
+                if (event.keyCode == 13){
+                    startGraphing();
+                }
+                if (event.type == 'autocompleteselect'){
+                    startGraphing();
+                }
+            }
         });
         $('#searchButton').click(function() {
             startGraphing();
         });
-        $('#tags').on('keypress', function(e) {
+
+        var tags = $('#tags');
+        tags.on('keypress', function(e) {
             if (e.which == 13) {
                 startGraphing();
             }
+        });
+        tags.on('click', function() {
+            startGraphing();
         });
     });
 }
@@ -93,8 +106,7 @@ $(function() {
     $('#logout').click(function() {
         logout();
     });
-
-})
+});
 
 
 function searchHistogram() {
@@ -121,7 +133,7 @@ function searchHistogram() {
         },
         tooltip: {
             valueSuffix: ' classes',
-            pointFormat: '<b>{point.y}</b>',
+            pointFormat: '<b>{point.y}</b>'
         },
         plotOptions: {
             column: {

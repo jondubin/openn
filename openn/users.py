@@ -13,12 +13,11 @@ def hello():
     if 'username' not in session: 
         return render_template('index.html')
     user = mongo.students.find_one({'username': session['username']})
-    if not user:
+    if user == None:
         return render_template('index.html')
     if 'grades' not in user:
-        return render_template('landing.html', numUsers=mongo.students.count())
-    else:
-        return render_template('main.html')
+        return render_template('landing.html', numUsers = mongo.students.count())
+    else: return render_template('main.html')
 
 
 
@@ -33,14 +32,14 @@ def auth():
 
     # # Check for some errors
     if len(entered_user) == 0:
-        return jsonify(errors='username_none')
+        return jsonify(errors = 'username_none')
     if len(entered_password) == 0:
-        return jsonify(errors='pass_none')
+        return jsonify(errors = 'pass_none')
 
     students = mongo.students
     # Find the user
     user = students.find_one({'username': entered_user.lower()})
-    if user:
+    if not user == None:
         # The user was found, so continue
         # if u['password'] == bcrypt.hashpw(entered_password, u['password']):
         # pw_hash = bcrypt.generate_password_hash(entered_password, 12)
@@ -78,9 +77,10 @@ def create():
     # Hash a password for the first time, with a randomly-generated salt
     # hashed_password = bcrypt.hashpw(pw1, bcrypt.gensalt(12))
     hashed_password = bcrypt.generate_password_hash(pw1, 12)
-    user_id = mongo.students.insert({'username': username.lower(),
-                                     'password': hashed_password
-                                     })
+    user_id = mongo.students.insert({
+        'username': username.lower(),
+        'password': hashed_password
+    })
     app.permanent_session_lifetime = timedelta(days=365)
     # Assign session data for user
     session.permanent = True

@@ -1,7 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
-<head>
+{% extends "base.html" %}
+{% block styles %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Openn</title>
@@ -20,10 +18,9 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 
-</head>
+{% endblock styles %}
 
-<body>
-
+{% block content %}
     
     <div class="row">
         <div class="large-3 columns">
@@ -35,9 +32,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <div class="row">
 
@@ -57,7 +51,6 @@
         </div>
 
        <div class="large-9 columns" id="content">
-
 
         </div> 
 
@@ -88,8 +81,9 @@
 
     <script type='text/html' id="searchContent">
     <h3> Course Search </h3>
+    <br>
     <div class="ui-widget" id="searchDropDown">
-        <label for="tags">Tags:</label>
+        <label for="tags">Courses:</label>
         <input id="tags">
     </div> 
     <!--<div id="searchButton" ></div>-->
@@ -151,10 +145,4 @@
     });
     </script>
 
-    {% include "partials/footer.html" %}
-
-
-<div id="setUserRemoveDiv" style="visibility:hidden"></div>
-</body>
-
-</html>
+{% endblock content %}

@@ -2,101 +2,19 @@
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Openn</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup-form.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <script src="{{ url_for('static', filename='jquery.min.js') }} "></script>
-    <script src="{{ url_for('static', filename='js/vendor/modernizr.js') }} "></script>
-    <script src="{{ url_for('static', filename='highcharts.js') }} "></script>
-    <script src="{{ url_for('static', filename='jquery.tablesorter.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.default.css') }}">
-    <script src="{{ url_for('static', filename='main.js') }} "></script>
-    <script src="{{ url_for('static', filename='personal.js') }} "></script>
 
+    {% block styles %}{% endblock styles %}
 
 </head>
 
 <body>
 
-    <div class="row">
-        <div class="large-3 columns">
-            <h1><a href="http://openn.me" id='logo'><img src="{{ url_for('static', filename='img/logo.png') }}"/></a></h1>
-        </div>
-        <div class="large-9 columns">
-            <div id="logout">
-                <button>Logout</button>
-            </div>
-        </div>
-    </div>
+    {% block content %}{% endblock content %}
 
-    <div class="row">
+    {% include "partials/footer.html" %}
 
-        <div class="large-7  columns">
+    <div id="setUserRemoveDiv" style="visibility:hidden"></div>
 
-            <h3>Welcome to Openn</h3>
-
-            <p>Pretty soon, you'll have access to the largest database of course grade distributions available at the University of Pennsylvania. To get started, we ask that you contribute to the anonymous database by importing your own grade history. You can do this with our Chrome extension by following the directions below. </p>
-
-            <p>So far, <strong> {{numUsers}} students </strong> have imported their grades from Penn InTouch. Importing your grades is <strong>completely anonymous</strong>, and <strong>we do not collect any identifying information</strong>, aside from your past course history, performance, graduation year, and school. Feel free to check out the source code on GitHub if you are interested in how the extension functions. We believe in openness and transparency above all, and we hope you find this project useful.</p>
-        </div>
-        <div class="large-5  columns"> </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="large-7  columns">
-
-            - You'll need Google Chrome to set up your Openn account. After setting up your account, you can use your browser of choice. Install our Chrome extension, available <a href="https://chrome.google.com/webstore/detail/openn/dclfciddpiecegmegddeghoocekaelid" target="_blank">here</a>.
-
-        </div>
-        <div class = "large-5 columns"><a href='https://chrome.google.com/webstore/detail/openn/dclfciddpiecegmegddeghoocekaelid'  target="_blank"><img src="{{ url_for('static', filename='img/chrome.png') }}"></img></a></div>
-    </div>
-
-<br>
-    <div class="row">
-
-        <div class="large-7  columns">
-
-            - Go to <a href="https://pennintouch.apps.upenn.edu/pennInTouch/jsp/fast2.do">Penn Intouch</a> and login. On the sidebar, expand the "Academic records" section and go to "View grades."
-
-        </div>
-        <div class = "large-5 columns"><a href='https://pennintouch.apps.upenn.edu/pennInTouch/jsp/fast2.do' target="_blank"><img src="{{ url_for('static', filename='img/sidebar.png') }}"></img></a></div>
-    </div>
-    <br>
-    <div class="row">
-
-        <div class="large-7  columns">
-
-            - On the "View grades" page, click on the large "Import grades into Openn" button at the top. Wait for the import process to finish. When it completes, the button will change from green to blue.
-
-        </div>
-        <div class = "large-5 columns"><img src="{{ url_for('static', filename='img/import.png') }}"></img></div>
-    </div>
-
-    <br>
-    <div class="row">
-
-        <div class="large-7  columns">
-
-            - When the import finishes, you can close Penn InTouch and can even uninstall the Openn Chrome extension. Return to <a href="http://openn.me">Openn</a> and <strong>refresh the page</strong>. You now have access to the complete database of distributions as well as powerful personal analytics. Enjoy.
-
-        </div>
-        <div class = "large-5 columns"><img src="{{ url_for('static', filename='img/importComplete.png') }}"></img></div>
-    </div>
-
-</div>
-
-
-</div>
-
-{% include "partials/footer.html" %}
-
-<div id="setUserRemoveDiv" style="visibility:hidden"></div>
 </body>
 
 </html>

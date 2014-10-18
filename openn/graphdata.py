@@ -56,6 +56,7 @@ def getCourse():
         grades = grades + info['grades']
     return jsonify(grades=genGrades(grades))
 
+
 ## @param course CIS-160-001-2014A
 @app.route('/getSection', methods=['GET'])
 def getSection():
@@ -67,6 +68,7 @@ def getSection():
 
     return jsonify(grades=genGrades(section['grades']))
     # return courseName
+
 
 def iterateClasses(data):
     grades = []
